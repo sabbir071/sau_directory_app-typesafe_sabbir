@@ -29,10 +29,18 @@ class PersonItemCard extends StatelessWidget {
     return Column(
       children: [
         title!=null?
+
         Card(
-          color: Theme.of(context).primaryColor,
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: Colors.white, width: 1),
+            borderRadius: BorderRadius.circular(10),
+          ),
+
+          color: Colors.green[900],
+
+         // color: Colors.white,
           elevation: 5,
-          shadowColor: Colors.white,
+          shadowColor: Colors.black,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Center(
@@ -42,8 +50,11 @@ class PersonItemCard extends StatelessWidget {
               ),
             ),
           ),
-        ): const SizedBox(),
+        )
+
+            : const SizedBox(),
         Card(
+
           color: Theme.of(context).cardColor,
           child: Container(
             width: MediaQuery.of(context).size.width,

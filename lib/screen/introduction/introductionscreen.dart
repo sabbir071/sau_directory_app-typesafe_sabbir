@@ -14,9 +14,11 @@ class IntroductionScreen extends StatelessWidget {
 
     var brightness = MediaQuery.of(context).platformBrightness;
     return Scaffold(
+      backgroundColor: Colors.green[900],
       appBar: const CustomAppbarInApp(
         appbarName: 'Introduction',
       ),
+
       body: Consumer<AppProvider>(
         builder: (context, provider, child) {
           return provider.introductionModel == null
@@ -27,6 +29,7 @@ class IntroductionScreen extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   child: AnimationLimiter(
                     child: Column(
+
                       children: AnimationConfiguration.toStaggeredList(
                           duration: const Duration(seconds: 1),
                           childAnimationBuilder: (widget) => SlideAnimation(
@@ -84,19 +87,24 @@ class IntroductionScreen extends StatelessWidget {
                                   .importantPersons.registrar.email,
                             ),
                             Card(
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.white, width: 1), // Adjust color and width as needed
+                                borderRadius: BorderRadius.circular(10), // Adjust radius as needed
+                              ),
                               color: Theme.of(context).primaryColor,
                               elevation: 5,
                               shadowColor: Colors.white,
                               child: const Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(8),
                                 child: Center(
-                                  child: SimpleText4(
+                                  child: SimpleText(
                                     text: 'SAU At A Glance',
                                     color: Colors.white,
                                   ),
                                 ),
                               ),
                             ),
+
                             Card(
                               color: Colors.white,
                               child: Padding(
@@ -104,6 +112,8 @@ class IntroductionScreen extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                   /* Text( "Date of Establishment: July 15, 2001 " , style: TextStyle (fontFamily: 'kalpurush',fontWeight: FontWeight.bold,fontSize: 18),
+                                    ),*/
                                     _buildTitleDetails(
                                         context,
                                         'Date of Establishment: July 15, 2001 ',
@@ -221,6 +231,8 @@ class IntroductionScreen extends StatelessWidget {
                 );
         },
       ),
+
+
     );
   }
 

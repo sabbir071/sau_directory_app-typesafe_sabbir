@@ -11,7 +11,7 @@ class MessageCard extends StatelessWidget {
     return Card(
       color: Theme.of(context).cardColor,
       elevation: 10,
-      shadowColor: Colors.grey,
+      shadowColor: Colors.black,
       child: Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(5.0),
@@ -33,6 +33,7 @@ class CardTypeB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+
       color: Theme.of(context).primaryColor,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
