@@ -86,7 +86,7 @@ class IntroductionScreen extends StatelessWidget {
                             Card(
                               color: Theme.of(context).primaryColor,
                               elevation: 5,
-                              shadowColor: Colors.grey,
+                              shadowColor: Colors.white,
                               child: const Padding(
                                 padding: EdgeInsets.all(10.0),
                                 child: Center(
@@ -98,7 +98,7 @@ class IntroductionScreen extends StatelessWidget {
                               ),
                             ),
                             Card(
-                              color: Theme.of(context).cardColor,
+                              color: Colors.white,
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Column(
