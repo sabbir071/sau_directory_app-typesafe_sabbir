@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
 
   }
 
-  Future<void> checkForUpdate() async {
+ /* Future<void> checkForUpdate() async {
     print('Checking for Update');
     InAppUpdate.checkForUpdate().then((info) {
        {
@@ -102,9 +102,31 @@ class MyApp extends StatelessWidget {
     InAppUpdate.completeFlexibleUpdate().then((_) {}).catchError((e) {
       print(e.toString());
     });
+  }*/
+
+
+  Future<void> checkForUpdate() async {
+    print('Checking for Update');
+    InAppUpdate.checkForUpdate().then((info) {
+      if (info.updateAvailability == UpdateAvailability.updateAvailable) {
+        print('Update Available');
+        update();
+      }
+    }).catchError((e) {
+      print(e.toString());
+    });
   }
 
-
+  void update() async {
+    print('Updating');
+    await InAppUpdate.startFlexibleUpdate();
+    try {
+      await InAppUpdate.completeFlexibleUpdate();
+      print('Update completed successfully!');
+    } catch (e) {
+      print('Error completing update: $e');
+    }
+  }
 
 
 

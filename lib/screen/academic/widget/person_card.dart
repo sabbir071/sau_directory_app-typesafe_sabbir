@@ -114,7 +114,7 @@ class PersonItemCard extends StatelessWidget {
                       TextSpan(
                         text: "$title: ",
                         style: TextStyle(
-                          color: Theme.of(context).textTheme.headline1?.color,
+                            color: Colors.green,fontWeight: FontWeight.bold
                         ),
                       ),
                       TextSpan(
@@ -122,7 +122,7 @@ class PersonItemCard extends StatelessWidget {
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontStyle: FontStyle.italic,
-                          color: Color(0xFFA2DFFB),
+                          color: Color(0xFF030303),
                         ),
                       ),
                     ]),

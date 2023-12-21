@@ -203,6 +203,8 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
         await dbHelper.deleteDB();
         isUpdate = true;
         await initConnectivity(context);
+        Navigator.of(context).pop();
+
       },
     );
 

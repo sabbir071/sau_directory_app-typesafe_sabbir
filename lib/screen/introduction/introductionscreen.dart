@@ -14,7 +14,7 @@ class IntroductionScreen extends StatelessWidget {
 
     var brightness = MediaQuery.of(context).platformBrightness;
     return Scaffold(
-      backgroundColor: Colors.green[900],
+     // backgroundColor: Colors.green[900],
       appBar: const CustomAppbarInApp(
         appbarName: 'Introduction',
       ),
@@ -107,6 +107,7 @@ class IntroductionScreen extends StatelessWidget {
 
                             Card(
                               color: Colors.white,
+                             // color: Theme.of(context).primaryColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Column(
