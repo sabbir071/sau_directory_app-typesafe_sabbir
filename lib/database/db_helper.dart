@@ -36,7 +36,6 @@ class DBHelper {
     return dataModel;
   }
 
-
   Future<void> deleteDB() async {
     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, 'saudirectory.db');
@@ -49,7 +48,6 @@ class DBHelper {
 
     // Reopen the database
     _db = await initDatabase();
-
   }
 
   Future<Map<String, Object?>> getDataByTitle(String title) async {
@@ -72,7 +70,7 @@ class DBHelper {
     final List<Map<String, Object?>>? maps = await dbClient?.query('appsdata');
 
     return maps;
-
-
   }
+
+
 }

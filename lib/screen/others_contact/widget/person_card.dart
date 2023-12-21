@@ -79,49 +79,60 @@ class PersonItemCard extends StatelessWidget {
     );
   }
 
-  Widget _buildContactDetailRow(BuildContext context,String title, String detail, IconData icon,
-      [Color? colors,Brightness? brightness]) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _buildContactDetailRow(context, String title, String detail, IconData icon,
+      [Color? colors, Brightness? brightness]) {
+    // Split the phone numbers
+    List<String> phoneNumbers = detail.split(', ');
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-
-        InkWell(
-
-          onTap: () async {
-            if (title.toLowerCase() == 'email') {
-              _makeEmail(detail);
-            } else {
-              _makePhoneCall(detail);
-            }
-          },
-
-          child: Expanded(
-            child: RichText(
-                text: TextSpan(children: [
-                  TextSpan(
-                      text: "$title: ",
-                      style:  TextStyle(
-                          color: Theme.of(context).textTheme.headline1?.color
-                      )),
-                  TextSpan(
-                      text: detail,
-                      style: const TextStyle(
+        for (var phoneNumber in phoneNumbers)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    if (title.toLowerCase() == 'email') {
+                      _makeEmail(phoneNumber);
+                    } else {
+                      _makePhoneCall(phoneNumber);
+                    }
+                  },
+                  child: RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                        text: "$title: ",
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.headline1?.color,
+                        ),
+                      ),
+                      TextSpan(
+                        text: phoneNumber,
+                        style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontStyle: FontStyle.italic,
-                          color: Color(0xFFA2DFFB))),
-                ])),
+                          color: Color(0xFFA2DFFB),
+                        ),
+                      ),
+                    ]),
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () async {
+                  if (title.toLowerCase() == 'email') {
+                    _makeEmail(phoneNumber);
+                  } else {
+                    _makePhoneCall(phoneNumber);
+                  }
+                },
+                child: Icon(icon, color: colors ?? Colors.green, size: 20),
+              ),
+            ],
           ),
-        ),
-        GestureDetector(
-            onTap: () async {
-              if (title.toLowerCase() == 'email') {
-                _makeEmail(detail);
-              } else {
-                _makePhoneCall(detail);
-              }
-            },
-            child: Icon(icon, color: colors ?? Colors.green, size: 20)),
+        const SizedBox(height: 5),
       ],
     );
   }

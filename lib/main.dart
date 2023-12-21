@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:in_app_update/in_app_update.dart';
 import 'package:provider/provider.dart';
 import 'package:sau_directory/config/theme_constants.dart';
+import 'package:sau_directory/database/db_helper.dart';
 import 'package:sau_directory/provider/app_provider.dart';
 import 'package:sau_directory/provider/search_provider.dart';
 import 'package:sau_directory/provider/theme_mode.dart';
@@ -13,18 +14,23 @@ void main() async {
   var myAppInstance = MyApp();
   await myAppInstance.checkForUpdate();
 
+
   runApp(MultiProvider(
+
     providers: [
       ChangeNotifierProvider(create: (_) => ThemeProvider()..initialize()),
       ChangeNotifierProvider(create: (_) => AppProvider()),
       ChangeNotifierProvider(create: (_) => SearchProvider()),
+
     ],
     child: const MyApp(),
   ));
+
+
 }
 
 class MyApp extends StatelessWidget {
-  const  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -97,6 +103,12 @@ class MyApp extends StatelessWidget {
       print(e.toString());
     });
   }
+
+
+
+
+
+
 
 
 }

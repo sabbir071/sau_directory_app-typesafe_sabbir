@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:sau_directory/widget/text/simple_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
 class PersonItemCard extends StatelessWidget {
   final String? title;
   final String? name;
   final String? designation;
   final String? mobile;
   final String? phone;
+ // final List<String>? phone;
   final String? email;
 
   const PersonItemCard(
@@ -34,7 +36,7 @@ class PersonItemCard extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Center(
-              child: SimpleText4(
+              child: SimpleText(
                 text: title!,
                 color: Colors.white,
               ),
@@ -54,19 +56,23 @@ class PersonItemCard extends StatelessWidget {
                 const SizedBox(
                   height: 5,
                 ),
+
                 mobile != null
                     ? _buildContactDetailRow(context,"Mobile", mobile!, Icons.phone,null,brightness)
                     : const SizedBox(),
                 const SizedBox(
                   height: 5,
                 ),
-                phone != null && phone!.trim().isNotEmpty
+
+
+             phone != null && phone!.trim().isNotEmpty
                     ? _buildContactDetailRow(
                     context,"Phone", phone!, Icons.phone,null,brightness)
                     : const SizedBox(),
                 const SizedBox(
                   height: 5,
                 ),
+
                 email != null
                     ? _buildContactDetailRow(context,
                         "Email", email!, Icons.email, Colors.red,brightness)
@@ -79,93 +85,67 @@ class PersonItemCard extends StatelessWidget {
     );
   }
 
-  Widget _buildContactDetailRow(BuildContext context,String title, String detail, IconData icon,
-      [Color? colors,Brightness? brightness]) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _buildContactDetailRow(context, String title, String detail, IconData icon,
+      [Color? colors, Brightness? brightness]) {
+    // Split the phone numbers
+    List<String> phoneNumbers = detail.split(', ');
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-        InkWell(
-
-
-          onTap: () async {
-            if (title.toLowerCase() == 'email') {
-              _makeEmail(detail);
-            } else {
-              _makePhoneCall(detail);
-            }
-          }
-          ,
-          child: Expanded(
-
-            child: RichText(
-              text: TextSpan(children: [
-                TextSpan(
-                  text: "$title: ",
-                  style: TextStyle(
-                    color: Theme.of(context).textTheme.headline1?.color,
+        for (var phoneNumber in phoneNumbers)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () async {
+                    if (title.toLowerCase() == 'email') {
+                      _makeEmail(phoneNumber);
+                    } else {
+                      _makePhoneCall(phoneNumber);
+                    }
+                  },
+                  child: RichText(
+                    text: TextSpan(children: [
+                      TextSpan(
+                        text: "$title: ",
+                        style: TextStyle(
+                          color: Theme.of(context).textTheme.headline1?.color,
+                        ),
+                      ),
+                      TextSpan(
+                        text: phoneNumber,
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontStyle: FontStyle.italic,
+                          color: Color(0xFFA2DFFB),
+                        ),
+                      ),
+                    ]),
                   ),
                 ),
-                TextSpan(
-                  text: detail,
-                  style: const TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontStyle: FontStyle.italic,
-                    color: Color(0xFFA2DFFB),
-                  ),
-                ),
-              ]),
-            ),
-
-
+              ),
+              GestureDetector(
+                onTap: () async {
+                  if (title.toLowerCase() == 'email') {
+                    _makeEmail(phoneNumber);
+                  } else {
+                    _makePhoneCall(phoneNumber);
+                  }
+                },
+                child: Icon(icon, color: colors ?? Colors.green, size: 20),
+              ),
+            ],
           ),
-        ),
-
-
-        GestureDetector(
-          onTap: () async {
-            if (title.toLowerCase() == 'email') {
-              _makeEmail(detail);
-            } else {
-              _makePhoneCall(detail);
-            }
-          },
-          child: Icon(icon, color: colors ?? Colors.green, size: 20),
-        ),
-
-        //
-        //       Expanded(
-        //         child: RichText(
-        //           text: TextSpan(children: [
-        //   TextSpan(
-        //         text: "$title: ",
-        //         style:  TextStyle(
-        //           color: Theme.of(context).textTheme.headline1?.color,
-        //         )),
-        //   TextSpan(
-        //         text: detail,
-        //         style: const TextStyle(
-        //             decoration: TextDecoration.underline,
-        //             fontStyle: FontStyle.italic,
-        //             color: Color(0xFFA2DFFB))),
-        // ])),
-        //       ),
-        //
-        //
-        //
-        //
-        // GestureDetector(
-        //     onTap: () async {
-        //       if (title.toLowerCase() == 'email') {
-        //         _makeEmail(detail);
-        //       } else {
-        //         _makePhoneCall(detail);
-        //       }
-        //     },
-        //     child: Icon(icon, color: colors ?? Colors.green, size: 20)),
+        const SizedBox(height: 5),
       ],
     );
   }
+
+
+
+
 
   Future<void> _makePhoneCall(String phoneNumber) async {
     final Uri launchUri = Uri(
@@ -183,3 +163,8 @@ class PersonItemCard extends StatelessWidget {
     await launchUrl(launchUri);
   }
 }
+
+
+
+
+

@@ -62,6 +62,7 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
   initConnectivity(BuildContext context) async {
     var status = await _connectivity.checkConnectivity();
     if (status == ConnectivityResult.none) {
+      await showData(context);
       notifyListeners();
     } else {
       await getSectionData();
@@ -77,7 +78,6 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
       await getAssociationData();
       await getOthersContactData();
       await getAboutSAUDirectory();
-      await showData(context);
     }
   }
 
@@ -125,6 +125,7 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
       log("offline version:$currentVersion");
       var status = await _connectivity.checkConnectivity();
       if (status == ConnectivityResult.none) {
+        initConnectivity(context);
         notifyListeners();
       } else {
         var response = await get(API.versionCheck);
@@ -461,13 +462,15 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
   // show
 
   showSectionData() async {
+    print("showSectionData");
     await dbHelper
         .getDataByTitle('section')
         .then((value) => {
               sectionList = sectionModelFromMap(value['data'].toString()),
               log('success'),
             })
-        .onError((error, stackTrace) => {log(error.toString())});
+        .onError((error, stackTrace) => {print(
+        "error ${error.toString()}")});
   }
 
   showIntroductionData() async {

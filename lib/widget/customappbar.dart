@@ -11,7 +11,7 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       centerTitle: true,
-      title: const Text('SAU Directory'),
+      title: const Text('SAU Directory', style: TextStyle(color: Colors.white),),
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 14.0),
@@ -19,7 +19,8 @@ class CustomAppbar extends StatelessWidget implements PreferredSizeWidget {
             width: 35,
             height: 35,
             child: IconButton(
-              icon: Image.asset('assets/images/search.png'),
+              icon: Icon(Icons.search),
+             // icon: Image.asset('assets/images/search.png'),
               onPressed: () {
                 Navigator.pushNamed(context, RouteName.searchScreen);
               },
