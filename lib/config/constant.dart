@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 //const String apiURL = "saudirectory.wsfilter.com";
-const String apiURL = "test.saudirectory.info.bd";
+const String apiURL = "appdev.saudirectory.info.bd";
 //const String apiURL = "103.145.112.178:8000";
 //const String visibility = "/public";
 const String visibility = "";
 const String apiBase = "/api";
 
-const String fileUrl="http://test.saudirectory.info.bd/";   //removed /public
+const String fileUrl="http://appdev.saudirectory.info.bd/";   //removed /public
 //const String fileUrl="https://saudirectory.wsfilter.com/public/";
 
 
