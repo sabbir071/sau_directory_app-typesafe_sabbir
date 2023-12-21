@@ -32,7 +32,7 @@ class PersonItemCard extends StatelessWidget {
         Card(
           color: Theme.of(context).primaryColor,
           elevation: 5,
-          shadowColor: Colors.grey,
+          shadowColor: Colors.white,
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Center(
