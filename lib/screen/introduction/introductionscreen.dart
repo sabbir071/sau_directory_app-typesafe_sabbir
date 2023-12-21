@@ -106,15 +106,13 @@ class IntroductionScreen extends StatelessWidget {
                             ),
 
                             Card(
-                              color: Colors.white,
-                             // color: Theme.of(context).primaryColor,
+                             // color: Colors.red,
+                             //  color: Theme.of(context).primaryColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                   /* Text( "Date of Establishment: July 15, 2001 " , style: TextStyle (fontFamily: 'kalpurush',fontWeight: FontWeight.bold,fontSize: 18),
-                                    ),*/
                                     _buildTitleDetails(
                                         context,
                                         'Date of Establishment: July 15, 2001 ',

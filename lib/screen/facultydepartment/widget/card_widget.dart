@@ -25,7 +25,7 @@ class ListItemCard extends StatelessWidget {
                   child: Center(
                     child: SimpleText4(
                       text: title!,
-                      color: Colors.white,
+                      // color: Colors.white,
                     ),
                   ),
                 ),
@@ -119,7 +119,7 @@ class ListItemCard extends StatelessWidget {
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontStyle: FontStyle.italic,
-                          color: Color(0xFF030303),
+                          color: Colors.red,
                         ),
                       ),
                     ]),

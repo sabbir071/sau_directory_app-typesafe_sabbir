@@ -47,7 +47,7 @@ ThemeData lightTheme = ThemeData(
         )),
     cardColor: cardLightColor,
     cardTheme: CardTheme(
-      color: cardItemLightColor,
+      // color: cardItemLightColor,
       elevation: 5,
       shadowColor: Colors.grey
     ));

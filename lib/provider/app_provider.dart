@@ -78,10 +78,13 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
       await getAssociationData();
       await getOthersContactData();
       await getAboutSAUDirectory();
+      await showData(context);
+      notifyListeners();
     }
   }
 
   Future<void> showData(BuildContext context) async {
+
     await showSectionData();
     await showIntroductionData();
     await showAboutVCData();
@@ -473,6 +476,7 @@ class AppProvider extends PrivateAPI with ChangeNotifier {
             })
         .onError((error, stackTrace) => {print(
         "error ${error.toString()}")});
+    notifyListeners();
   }
 
   showIntroductionData() async {

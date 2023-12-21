@@ -75,7 +75,7 @@ class CardText extends StatelessWidget {
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.headline5?.copyWith(
               fontSize: 18 * provider.currentValue,
-              color: color ?? Theme.of(context).textTheme.headline5?.color));
+              color: color ??  Theme.of(context).textTheme.headline1?.color,));
     });
   }
 }

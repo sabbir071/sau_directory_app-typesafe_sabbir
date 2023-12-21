@@ -49,6 +49,7 @@ class FacultyScreen extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(20.0),
                                 child: CardText(
+                                  color: Theme.of(context).textTheme.headline1?.color,
                                   text: facultyModel.name.toString(),
                                 ),
                               ),

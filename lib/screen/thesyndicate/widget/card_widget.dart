@@ -137,7 +137,7 @@ class ListItemCard extends StatelessWidget {
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontStyle: FontStyle.italic,
-                          color: Color(0xFF030303),
+                          color: Colors.red,
                         ),
                       ),
                     ]),
