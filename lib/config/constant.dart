@@ -31,4 +31,8 @@ class CustomColors {
   static const disabled = primary;
   static const white = Color(0xffffffff);
   static const ownSop = Color(0xFFFF7643);
+  static const text_required_color = Color(0xFF0014FF);
+  static const freelancer_color = Color(0xFF84C5F6);
+
+  
 }

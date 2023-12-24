@@ -4,6 +4,8 @@ const Color _darkPrimaryColor = Colors.black;
 const Color _darkSecondaryColor = Colors.white;
 const Color _lightPrimaryColor = Color(0xFF32691C);
 
+const Color _lightPrimary = Color(0xFF207E24);
+
 // item content card
 const Color cardDarkColor = Color(0xFF222222);
 const Color cardLightColor = _darkSecondaryColor;
@@ -12,12 +14,16 @@ const Color cardLightColor = _darkSecondaryColor;
 const Color cardItemDarkColor = Color(0xFF222222);
 const Color cardItemLightColor = _lightPrimaryColor;
 
+const Color cardItemDark = Color(0xFF222222);
+const Color cardItem = _lightPrimary;
+
 
 ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: _lightPrimaryColor,
 
     appBarTheme: const AppBarTheme(
+      titleTextStyle: TextStyle(color: Colors.white),
         color: _lightPrimaryColor,
         iconTheme: IconThemeData(
           color: _darkSecondaryColor,
@@ -46,7 +52,7 @@ ThemeData lightTheme = ThemeData(
         )),
     cardColor: cardLightColor,
     cardTheme: CardTheme(
-      color: cardItemLightColor,
+      color: cardItem,
       elevation: 5,
       shadowColor: Colors.grey
     ));
