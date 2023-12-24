@@ -12,7 +12,7 @@ class ThemeProvider extends ChangeNotifier {
     } else if (currentTheme == 'dark') {
       return ThemeMode.dark;
     } else {
-      return ThemeMode.system;
+      return ThemeMode.light;
     }
   }
 
@@ -36,7 +36,7 @@ class ThemeProvider extends ChangeNotifier {
 
   initialize() async {
     final SharedPreferences _prefs = await SharedPreferences.getInstance();
-    currentTheme = _prefs.getString('theme') ?? 'system';
+    currentTheme = _prefs.getString('theme') ?? 'light';
     currentValue = _prefs.getDouble('font') ?? 1.0;
     notifyListeners();
   }

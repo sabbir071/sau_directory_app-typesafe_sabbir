@@ -51,6 +51,7 @@ class DeansScreen extends StatelessWidget {
                                   padding: const EdgeInsets.all(20.0),
                                   child: CardText(
                                     text: deansModel.name,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),

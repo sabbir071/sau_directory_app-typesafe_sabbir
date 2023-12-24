@@ -117,9 +117,8 @@ class PersonItemCard extends StatelessWidget {
                         style: TextStyle(
                           decoration: TextDecoration.underline,
                           fontStyle: FontStyle.italic,
-                          color: Provider.of<ThemeProvider>(context).currentTheme == 'light'
-                              ? CustomColors.text_required_color
-                              : CustomColors.freelancer_color,
+                          color: Provider.of<ThemeProvider>(context).currentTheme == 'light' ?
+                          CustomColors.text_required_color : CustomColors.freelancer_color,
                         ),
                       ),
                     ]),

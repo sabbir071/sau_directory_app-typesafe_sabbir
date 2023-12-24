@@ -84,89 +84,92 @@ class PersonItemCard extends StatelessWidget {
 
   Widget _buildContactDetailRow(BuildContext context,String title, String detail, IconData icon,
       [Color? colors,Brightness? brightness]) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
+    List<String> phoneNumbers = detail.split(', ');
+    return Column(
+      children:List.generate(phoneNumbers.length, (index) => Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
 
-        InkWell(
+          InkWell(
 
 
-          onTap: () async {
-            if (title.toLowerCase() == 'email') {
-              _makeEmail(detail);
-            } else {
-              _makePhoneCall(detail);
+            onTap: () async {
+              if (title.toLowerCase() == 'email') {
+                _makeEmail(detail);
+              } else {
+                _makePhoneCall(detail);
+              }
             }
-          }
-          ,
-          child: Expanded(
+            ,
+            child: Expanded(
 
-            child: RichText(
-              text: TextSpan(children: [
-                TextSpan(
-                  text: "$title: ",
-                  style: TextStyle(
-                    color: Theme.of(context).textTheme.headline1?.color,
+              child: RichText(
+                text: TextSpan(children: [
+                  TextSpan(
+                    text: "$title: ",
+                    style: TextStyle(
+                      color: Theme.of(context).textTheme.headline1?.color,
+                    ),
                   ),
-                ),
-                TextSpan(
-                  text: detail,
-                  style: TextStyle(
-                    decoration: TextDecoration.underline,
-                    fontStyle: FontStyle.italic,
-                    color: Provider.of<ThemeProvider>(context).currentTheme == 'light' ? CustomColors.text_required_color : CustomColors.freelancer_color,
+                  TextSpan(
+                    text: phoneNumbers[index],
+                    style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      fontStyle: FontStyle.italic,
+                      color: Provider.of<ThemeProvider>(context).currentTheme == 'light' ? CustomColors.text_required_color : CustomColors.freelancer_color,
+                    ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
+
+
             ),
-
-
           ),
-        ),
 
 
-        GestureDetector(
-          onTap: () async {
-            if (title.toLowerCase() == 'email') {
-              _makeEmail(detail);
-            } else {
-              _makePhoneCall(detail);
-            }
-          },
-          child: Icon(icon, color: colors ?? Colors.green, size: 20),
-        ),
+          GestureDetector(
+            onTap: () async {
+              if (title.toLowerCase() == 'email') {
+                _makeEmail(detail);
+              } else {
+                _makePhoneCall(detail);
+              }
+            },
+            child: Icon(icon, color: colors ?? Colors.green, size: 20),
+          ),
 
-        //
-        //       Expanded(
-        //         child: RichText(
-        //           text: TextSpan(children: [
-        //   TextSpan(
-        //         text: "$title: ",
-        //         style:  TextStyle(
-        //           color: Theme.of(context).textTheme.headline1?.color,
-        //         )),
-        //   TextSpan(
-        //         text: detail,
-        //         style: const TextStyle(
-        //             decoration: TextDecoration.underline,
-        //             fontStyle: FontStyle.italic,
-        //             color: Color(0xFFA2DFFB))),
-        // ])),
-        //       ),
-        //
-        //
-        //
-        //
-        // GestureDetector(
-        //     onTap: () async {
-        //       if (title.toLowerCase() == 'email') {
-        //         _makeEmail(detail);
-        //       } else {
-        //         _makePhoneCall(detail);
-        //       }
-        //     },
-        //     child: Icon(icon, color: colors ?? Colors.green, size: 20)),
-      ],
+          //
+          //       Expanded(
+          //         child: RichText(
+          //           text: TextSpan(children: [
+          //   TextSpan(
+          //         text: "$title: ",
+          //         style:  TextStyle(
+          //           color: Theme.of(context).textTheme.headline1?.color,
+          //         )),
+          //   TextSpan(
+          //         text: detail,
+          //         style: const TextStyle(
+          //             decoration: TextDecoration.underline,
+          //             fontStyle: FontStyle.italic,
+          //             color: Color(0xFFA2DFFB))),
+          // ])),
+          //       ),
+          //
+          //
+          //
+          //
+          // GestureDetector(
+          //     onTap: () async {
+          //       if (title.toLowerCase() == 'email') {
+          //         _makeEmail(detail);
+          //       } else {
+          //         _makePhoneCall(detail);
+          //       }
+          //     },
+          //     child: Icon(icon, color: colors ?? Colors.green, size: 20)),
+        ],
+      ))
     );
   }
 
