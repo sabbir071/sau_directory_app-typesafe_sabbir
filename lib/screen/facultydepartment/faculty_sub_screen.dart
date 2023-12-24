@@ -58,6 +58,7 @@ class FacultySubScreen extends StatelessWidget {
                                             text: departmentModel.name,
                                             color: Colors.white,
                                             textAlign: TextAlign.center,
+
                                           )),
                                     ),
 
@@ -71,10 +72,12 @@ class FacultySubScreen extends StatelessWidget {
                                           child: Text(
                                             'No members available',
                                             style: TextStyle(fontSize: 16),
+
                                           ),
                                         ),
                                       ): AnimationLimiter(
                                         child: ListView.builder(
+
                                           shrinkWrap: true,
                                           physics: const NeverScrollableScrollPhysics(),
                                           itemCount: departmentModel.designation.length,
@@ -91,6 +94,8 @@ class FacultySubScreen extends StatelessWidget {
                                                   ListItemCard(
                                                       title: titleModel.name,
                                                       members: titleModel.employee) : const SizedBox.shrink(),
+
+
                                                 ),
                                               ),
                                             );
@@ -118,8 +123,9 @@ class FacultySubScreen extends StatelessWidget {
                         child: Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: departmentModel.designation.any((element) => element.employee.isEmpty)
-                              ? CardText(text: departmentModel.name.toString())
+                              ? CardText(text: departmentModel.name.toString(),color: Colors.white,)
                               : const SizedBox.shrink(),
+
                         ),
                       ),
                     ),

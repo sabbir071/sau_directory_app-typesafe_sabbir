@@ -155,6 +155,7 @@ class OfficesScreen extends StatelessWidget {
                                   padding: const EdgeInsets.all(20.0),
                                   child: CardText(
                                     text: directoryModel.name,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),

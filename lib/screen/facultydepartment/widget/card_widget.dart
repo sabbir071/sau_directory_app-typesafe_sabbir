@@ -29,6 +29,7 @@ class ListItemCard extends StatelessWidget {
                   child: Center(
                     child: SimpleText4(
                       text: title!,
+                      color: Colors.white,
                       // color: Colors.white,
                     ),
                   ),
@@ -97,6 +98,7 @@ class ListItemCard extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
         for (var phoneNumber in phoneNumbers)
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -143,6 +145,8 @@ class ListItemCard extends StatelessWidget {
               ),
             ],
           ),
+
+
         const SizedBox(height: 5),
       ],
     );

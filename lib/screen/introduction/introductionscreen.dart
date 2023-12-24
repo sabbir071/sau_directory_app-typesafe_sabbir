@@ -107,7 +107,7 @@ class IntroductionScreen extends StatelessWidget {
 
                             Card(
                              // color: Colors.white,
-                               color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).cardColor,
                               child: Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: Column(
