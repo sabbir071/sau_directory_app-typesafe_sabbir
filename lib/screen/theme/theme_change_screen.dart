@@ -13,7 +13,9 @@ class ThemeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppbarInApp(appbarName: 'Theme',),
+      appBar: const CustomAppbarInApp(
+        appbarName: 'Theme',
+      ),
       body: Consumer<ThemeProvider>(builder: (context, provider, child) {
         return Container(
           color: Colors.grey[300],
@@ -56,6 +58,7 @@ class ThemeScreen extends StatelessWidget {
                 },
                 color: Colors.black,
                 iconColor: Colors.white,
+
               ),
             ],
           ),

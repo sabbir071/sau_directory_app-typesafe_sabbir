@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sau_directory/widget/text/simple_text.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../config/constant.dart';
+import '../provider/theme_mode.dart';
 
 
 class PersonItemCard extends StatelessWidget {
@@ -125,15 +129,27 @@ class PersonItemCard extends StatelessWidget {
                           color: Colors.green,fontWeight: FontWeight.bold
                         ),
                       ),
-                      TextSpan(
+                      /*TextSpan(
                         text: phoneNumber,
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontStyle: FontStyle.italic,
-                          color: Colors.red
-
+                          color: CustomColors.text_required_color,
+                        ),
+                      ),*/
+                      TextSpan(
+                        text: phoneNumber,
+                        style: TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontStyle: FontStyle.italic,
+                          color: Provider.of<ThemeProvider>(context).currentTheme == 'light'
+                              ? CustomColors.text_required_color
+                              : CustomColors.freelancer_color,
                         ),
                       ),
+
+
+
                     ]),
                   ),
                 ),
